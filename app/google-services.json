@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626709667428",
+    "project_id": "mydeltanews",
+    "storage_bucket": "mydeltanews.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626709667428:android:982657b42fe65dd3314971",
+        "android_client_info": {
+          "package_name": "com.example.mydeltanews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626709667428-kgf9jt51nia3r9m3f0lamlv7t4m21sdm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6YYnN8Vlqudx4hZzEtusdxg-GAWG8EFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626709667428-kgf9jt51nia3r9m3f0lamlv7t4m21sdm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
