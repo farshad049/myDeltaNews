@@ -4,9 +4,12 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mydeltanews.databinding.ActivityMainBinding
+import com.example.mydeltanews.model.NewsFeedModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -31,32 +34,10 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewAdapter=NewsFeedAdapter()
         binding.recyclerView.adapter=recyclerViewAdapter
 
-        viewModel.newsFeedLiveData.observe(this){
-            recyclerViewAdapter.setItems(it)
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        viewModel.newsFeedLiveData.observe(this){
+//            recyclerViewAdapter.setItems(it)
+//        }
 
     }//FUN
-
-
-
-
-
 }
+

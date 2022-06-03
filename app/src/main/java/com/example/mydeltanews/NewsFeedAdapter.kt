@@ -1,5 +1,6 @@
 package com.example.mydeltanews
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,10 @@ class NewsFeedAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return newsItem.size
     }
 
-    fun setItems(newsFeedItem:List<NewsFeedModel>){
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(newsFeedItem:List<NewsFeedModel>?){
         newsItem.clear()
-        newsItem.addAll(newsFeedItem)
+        newsItem.addAll(newsFeedItem ?: emptyList())
         notifyDataSetChanged()
     }
 
@@ -35,8 +37,11 @@ class NewsFeedAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val binding=NewsItemBinding.bind(itemView)
 
         fun onBind(newsFeedItem:NewsFeedModel){
-            binding.tvTitle.text=newsFeedItem.title
-            binding.tvDescription.text=newsFeedItem.description
+//            binding.tvTitle.text=newsFeedItem.title
+//            binding.tvDescription.text=newsFeedItem.description
+
+            binding.title=newsFeedItem.title
+            binding.descriptions=newsFeedItem.description
         }
 
     }

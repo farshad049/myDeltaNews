@@ -19,6 +19,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         android:layout_marginHorizontal="8dp"
+        app:setItemsByFarhad="@{viewModel.newsFeedLiveData}"
         />
         
     </androidx.constraintlayout.widget.ConstraintLayout>
