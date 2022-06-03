@@ -21,29 +21,22 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: NewsFeedViewModel= ViewModelProvider(this)[NewsFeedViewModel::class.java]
 
-
+        //this is for data binding
         binding.lifecycleOwner=this
         binding.viewModel=viewModel
 
+        //take the data
+        viewModel.fetch()
 
-        // Write a message to the database
-//        val database = Firebase.database
-//        val myRef = database.getReference("message")
-//
-//        // Read from the database
-//        myRef.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                Log.i("SNAPSHOT",dataSnapshot.value.toString())
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                // Failed to read value
-//
-//            }
-//        })
+        val recyclerViewAdapter=NewsFeedAdapter()
+        binding.recyclerView.adapter=recyclerViewAdapter
+
+        viewModel.newsFeedLiveData.observe(this){
+            recyclerViewAdapter.setItems(it)
+        }
+
+
+
 
 
 
