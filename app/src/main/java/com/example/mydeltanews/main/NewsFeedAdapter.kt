@@ -1,14 +1,19 @@
-package com.example.mydeltanews
+package com.example.mydeltanews.main
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mydeltanews.R
 import com.example.mydeltanews.databinding.NewsItemBinding
 import com.example.mydeltanews.model.NewsFeedModel
-import com.squareup.picasso.Picasso
+import java.lang.ref.WeakReference
 
-class NewsFeedAdapter(private val onItemClick:(String) -> Unit):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsFeedAdapter(private val onItemClick:OnClickInterface):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
+
+
     private val newsItem= mutableListOf<NewsFeedModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -16,7 +21,11 @@ class NewsFeedAdapter(private val onItemClick:(String) -> Unit):RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as NewsFeedItemViewHolder).onBind(newsItem[position],onItemClick)
+        (holder as NewsFeedItemViewHolder).onBind(
+            newsItem[position],
+            onItemClick
+
+        )
     }
 
     override fun getItemCount(): Int {
@@ -37,16 +46,34 @@ class NewsFeedAdapter(private val onItemClick:(String) -> Unit):RecyclerView.Ada
     ){
         private val binding=NewsItemBinding.bind(itemView)
         //newsFeedItem is implementing in activity_main.xml because of dataBinding
-        fun onBind(newsFeedItem:NewsFeedModel,onclick:(String)->Unit){
+        fun onBind(newsFeedItem:NewsFeedModel, onClick:OnClickInterface){
             binding.imageUrl=newsFeedItem.image_url
             binding.title=newsFeedItem.title
             binding.descriptions=newsFeedItem.description
             binding.source=newsFeedItem.source
             binding.published=newsFeedItem.published
             binding.root.setOnClickListener {
-                onclick(newsFeedItem.url)
+                onClick.onItemClicked(newsFeedItem.url)
+            }
+
+            val drawableResId: Int = if (newsFeedItem.favorite) {
+                R.drawable.ic_favorite_24
+            } else {
+                R.drawable.ic_favorite_outline_24
+            }
+            binding.favorite.setImageResource(drawableResId)
+            binding.favorite.setOnClickListener {
+                val newStatus= !newsFeedItem.favorite
+                onClick.onFavoriteClicked(newsFeedItem.id,newStatus)
             }
         }
 
     }
 }
+
+interface OnClickInterface {
+    fun onItemClicked(url:String)
+    fun onFavoriteClicked(newsFeedItemId:String,isFavorite:Boolean)
+}
+
+

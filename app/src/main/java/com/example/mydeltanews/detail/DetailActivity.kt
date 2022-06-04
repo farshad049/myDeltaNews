@@ -1,18 +1,18 @@
-package com.example.mydeltanews
+package com.example.mydeltanews.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
+import com.example.mydeltanews.R
 import com.example.mydeltanews.databinding.ActivityDetailBinding
-import com.example.mydeltanews.databinding.ActivityMainBinding
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding:ActivityDetailBinding=
-            DataBindingUtil.setContentView(this,R.layout.activity_detail)
+            DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
 
 

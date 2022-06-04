@@ -12,8 +12,8 @@ import com.google.firebase.ktx.Firebase
 class NewsFeedRepository {
 
 
-    val database = Firebase.database
-    val myRef = database.getReference("new_feed")
+    private val database = Firebase.database
+    private val myRef = database.getReference("new_feed")
 
 
     fun fetchNews(liveData:MutableLiveData<List<NewsFeedModel>>){
@@ -27,6 +27,8 @@ class NewsFeedRepository {
 
                 val newsFeedItems:List<NewsFeedModel> = dataSnapshot.children.map {
                     it.getValue(NewsFeedModel::class.java)!!
+                            //because we don't have an Id field for each item ,we are using each item ket as its id, and we are doing that by making a copy of item and add our id to it
+                        .copy(id = it.key!!)
                 }
                 Log.i("ITEM",newsFeedItems.toString())
                 liveData.postValue(newsFeedItems)
@@ -38,6 +40,15 @@ class NewsFeedRepository {
             }
         })
     }
+
+
+
+    fun updateIsFavoriteStatus(id:String,isFavorite:Boolean){
+        myRef.child(id).child("favorite").setValue(isFavorite)
+    }
+
+
+
 
 
 

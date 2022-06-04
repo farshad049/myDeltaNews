@@ -16,11 +16,11 @@
         android:theme="@style/Theme.MyDeltaNews"
         tools:targetApi="31">
         <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".detail.DetailActivity"
+            android:parentActivityName=".main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

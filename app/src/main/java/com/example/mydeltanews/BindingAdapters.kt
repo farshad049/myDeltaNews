@@ -4,6 +4,7 @@ import android.webkit.WebView
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mydeltanews.main.NewsFeedAdapter
 import com.example.mydeltanews.model.NewsFeedModel
 import com.squareup.picasso.Picasso
 

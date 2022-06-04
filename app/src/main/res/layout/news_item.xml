@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -21,14 +20,13 @@
                 android:id="@+id/ivImage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="16:9"
                 android:scaleType="centerCrop"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:src="@tools:sample/backgrounds/scenic[2]"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:loadWithPicasso="@{image_url}"
-                />
+                tools:src="@tools:sample/backgrounds/scenic[2]" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitle"
@@ -36,68 +34,82 @@
                 android:layout_height="wrap_content"
                 android:background="?colorPrimaryVariant"
                 android:padding="10dp"
+                android:text="@{title}"
                 android:textColor="?colorOnPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivImage"
-                tools:text="title"
-                android:text="@{title}"/>
+                tools:text="title" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:text="@{descriptions}"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/tvTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                tools:text="descriptions"
-                android:text="@{descriptions}"/>
+                tools:text="descriptions" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@{source}"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-                tools:text="source"
-                android:layout_marginEnd="10dp"
-                android:layout_margin="10dp"
-                android:textSize="18sp"
-                android:text="@{source}"
-                />
+                tools:text="source" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPublished"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="sept 12 2021"
-                app:layout_constraintTop_toBottomOf="@+id/tvSource"
                 android:layout_marginEnd="10dp"
+                android:padding="10dp"
                 android:text="@{published}"
                 android:textStyle="italic"
-                android:padding="10dp"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSource"
+                tools:text="sept 12 2021" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                tools:src="@drawable/ic_favorite_24"
+                android:tint="?colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
-    
+
     <data>
+
         <variable
             name="title"
             type="String" />
+
         <variable
             name="descriptions"
             type="String" />
+
         <variable
             name="source"
             type="String" />
+
         <variable
             name="published"
             type="String" />
+
         <variable
             name="image_url"
             type="String" />
