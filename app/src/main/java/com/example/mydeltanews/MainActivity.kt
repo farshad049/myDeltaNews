@@ -1,6 +1,7 @@
 package com.example.mydeltanews
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         //take the data
         viewModel.fetch()
 
-        val recyclerViewAdapter=NewsFeedAdapter()
+        val recyclerViewAdapter=NewsFeedAdapter(::onItemClick)
         binding.recyclerView.adapter=recyclerViewAdapter
 
 //        viewModel.newsFeedLiveData.observe(this){
@@ -39,5 +40,12 @@ class MainActivity : AppCompatActivity() {
 //        }
 
     }//FUN
+
+    private fun onItemClick(url:String){
+        val intent=Intent(this,DetailActivity::class.java).apply {
+            putExtra("link",url)
+        }
+        startActivity(intent)
+    }
 }
 

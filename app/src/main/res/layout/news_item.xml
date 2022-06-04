@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="16:9"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic[2]"
+                app:loadWithPicasso="@{image_url}"
+                />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
@@ -28,7 +41,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivImage"
                 tools:text="title"
                 android:text="@{title}"/>
 
@@ -43,6 +56,31 @@
                 tools:text="descriptions"
                 android:text="@{descriptions}"/>
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                tools:text="source"
+                android:layout_marginEnd="10dp"
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:text="@{source}"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPublished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="sept 12 2021"
+                app:layout_constraintTop_toBottomOf="@+id/tvSource"
+                android:layout_marginEnd="10dp"
+                android:text="@{published}"
+                android:textStyle="italic"
+                android:padding="10dp"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -53,6 +91,15 @@
             type="String" />
         <variable
             name="descriptions"
+            type="String" />
+        <variable
+            name="source"
+            type="String" />
+        <variable
+            name="published"
+            type="String" />
+        <variable
+            name="image_url"
             type="String" />
     </data>
 </layout>
